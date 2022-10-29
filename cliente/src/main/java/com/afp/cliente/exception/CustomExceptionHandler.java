@@ -31,9 +31,9 @@ public class CustomExceptionHandler {
         return new ResponseEntity<List<ErrorModelException>>(customException.getErrors(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(CustomNoContentException.class)
-    public ResponseEntity<List<ErrorModelException>> handlerNoContentException(CustomNoContentException customNotFoundException){
-        return new ResponseEntity<List<ErrorModelException>>(customNotFoundException.getErrors(), HttpStatus.NO_CONTENT);
+    @ExceptionHandler(CustomNotFoundException.class)
+    public ResponseEntity<List<ErrorModelException>> handlerNoContentException(CustomNotFoundException customNotFoundException){
+        return new ResponseEntity<List<ErrorModelException>>(customNotFoundException.getErrors(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(Exception.class)
