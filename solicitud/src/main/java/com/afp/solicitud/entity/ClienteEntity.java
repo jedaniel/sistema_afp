@@ -1,4 +1,4 @@
-package com.afp.cliente.entity;
+package com.afp.solicitud.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -43,10 +43,10 @@ public class ClienteEntity {
     @Column(name = "nro_cta")
     private String nroCta;
 
-    @Column(name = "usuario_Registro")
+    @Column(name = "Usuario_Registro")
     private String usuarioRegistro;
 
-    @Column(name = "fecha_Registro")
+    @Column(name = "Fecha_Registro")
     private Date fechaRegistro;
 
 }

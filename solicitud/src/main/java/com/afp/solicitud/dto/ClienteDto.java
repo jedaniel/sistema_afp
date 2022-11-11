@@ -1,15 +1,16 @@
-package com.afp.cliente.dto;
+package com.afp.solicitud.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Column;
 import java.util.Date;
 
-@Data
+@Setter
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonNaming()
 public class ClienteDto {
     private Long clienteId;
     private String nombres;
@@ -23,5 +24,4 @@ public class ClienteDto {
     private String nroCta;
     private String usuarioRegistro;
     private Date fechaRegistro;
-
 }

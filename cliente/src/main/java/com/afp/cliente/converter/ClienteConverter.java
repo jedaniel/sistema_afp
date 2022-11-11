@@ -12,13 +12,16 @@ public class ClienteConverter {
         clienteEntity.setApellidos(clienteDto.getApellidos());
         clienteEntity.setCorreo(clienteDto.getCorreo());
         clienteEntity.setDni(clienteDto.getDni());
-        clienteEntity.setEstado(clienteDto.getEstado());
+        clienteEntity.setAfp(clienteDto.getAfp());
         clienteEntity.setNombres(clienteDto.getNombres());
         clienteEntity.setTelefono(clienteDto.getTelefono());
+
+        clienteEntity.setMontoDisponible(clienteDto.getMontoDisponible());
+        clienteEntity.setFechaRetiro(clienteDto.getFechaRetiro());
+        clienteEntity.setNroCta(clienteDto.getNroCta());
+
         clienteEntity.setFechaRegistro(clienteDto.getFechaRegistro());
-        clienteEntity.setFechaModificacion(clienteDto.getFechaModificacion());
         clienteEntity.setUsuarioRegistro(clienteDto.getUsuarioRegistro());
-        clienteEntity.setUsuarioModificacion(clienteDto.getUsuarioModificacion());
         return clienteEntity;
     }
 
@@ -28,13 +31,12 @@ public class ClienteConverter {
         clienteDto.setApellidos(clienteEntity.getApellidos());
         clienteDto.setCorreo(clienteEntity.getCorreo());
         clienteDto.setDni(clienteEntity.getDni());
-        clienteDto.setEstado(clienteEntity.getEstado());
+        clienteDto.setAfp(clienteEntity.getAfp());
         clienteDto.setNombres(clienteEntity.getNombres());
         clienteDto.setTelefono(clienteEntity.getTelefono());
+        clienteDto.setMontoDisponible(clienteEntity.getMontoDisponible());
         clienteDto.setFechaRegistro(clienteEntity.getFechaRegistro());
-        clienteDto.setFechaModificacion(clienteEntity.getFechaModificacion());
         clienteDto.setUsuarioRegistro(clienteEntity.getUsuarioRegistro());
-        clienteDto.setUsuarioModificacion(clienteEntity.getUsuarioModificacion());
         return clienteDto;
     }
 }

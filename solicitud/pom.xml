@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.afp</groupId>
-	<artifactId>cliente</artifactId>
+	<artifactId>solicitud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cliente</name>
-	<description>project for Cliente afp</description>
+	<name>solicitud</name>
+	<description>Demo project for solicitud</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

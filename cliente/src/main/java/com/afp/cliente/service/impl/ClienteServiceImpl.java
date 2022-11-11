@@ -27,7 +27,19 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ClienteDto saveClient(ClienteDto clienteDto) {
         ClienteEntity clienteEntity;
-        Optional<ClienteEntity> clienteEntityOptional = clienteRepository.findByDni(clienteDto.getDni());
+        Optional<ClienteEntity> clienteEntityOptional = null;
+        clienteEntityOptional = clienteRepository.findByDniAndAfp(clienteDto.getDni(), clienteDto.getAfp());
+        if(clienteEntityOptional.isPresent()){
+            List<ErrorModelException> errorModelExceptionList=new ArrayList<>();
+            ErrorModelException errorModelException=new ErrorModelException();
+            errorModelException.setCodeError("EXIST_REGISTER");
+            errorModelException.setMensajeError("El cliente con DNI " + clienteDto.getDni() + " ya se encuentra registrado a la AFP " + clienteDto.getAfp());
+            errorModelExceptionList.add(errorModelException);
+            throw new CustomBusinessException(errorModelExceptionList);
+        }
+
+        clienteEntityOptional = null;
+        clienteEntityOptional = clienteRepository.findByDni(clienteDto.getDni());
         if(clienteEntityOptional.isPresent()){
             List<ErrorModelException> errorModelExceptionList=new ArrayList<>();
             ErrorModelException errorModelException=new ErrorModelException();
@@ -43,7 +55,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ClienteDto updateClient(ClienteDto clienteDto, String dni) {
         ClienteEntity clienteEntity;
-        Optional<ClienteEntity> clienteEntityOptional = clienteRepository.findByDni(dni);
+        Optional<ClienteEntity> clienteEntityOptional =  clienteRepository.findByDni(dni);
         if(!clienteEntityOptional.isPresent()){
             List<ErrorModelException> errorModelExceptionList=new ArrayList<>();
             ErrorModelException errorModelException=new ErrorModelException();
@@ -54,12 +66,13 @@ public class ClienteServiceImpl implements ClienteService {
         }
         clienteEntity = clienteEntityOptional.get();
         clienteEntity.setNombres(clienteDto.getNombres());
-        clienteEntity.setEstado(clienteDto.getEstado());
         clienteEntity.setTelefono(clienteDto.getTelefono());
         clienteEntity.setCorreo(clienteDto.getCorreo());
         clienteEntity.setApellidos(clienteDto.getApellidos());
-        clienteEntity.setUsuarioModificacion(clienteDto.getUsuarioModificacion());
-        clienteEntity.setFechaModificacion(clienteDto.getFechaModificacion());
+        clienteEntity.setAfp(clienteDto.getAfp());
+        clienteEntity.setMontoDisponible(clienteDto.getMontoDisponible());
+        clienteEntity.setNroCta(clienteDto.getNroCta());
+        clienteEntity.setFechaRetiro(clienteDto.getFechaRetiro());
         clienteEntity=clienteRepository.save(clienteEntity);
         return clienteConverter.convertClienteEntityToClienteDto(clienteEntity);
     }
